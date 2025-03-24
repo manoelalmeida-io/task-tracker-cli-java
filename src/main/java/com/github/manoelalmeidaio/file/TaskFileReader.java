@@ -115,12 +115,12 @@ public class TaskFileReader {
         List<Object> list = new ArrayList<>();
 
         while (tokenStack.peek().equals(",")) {
-          list.add(valueStack.pop());
+          list.addFirst(valueStack.pop());
           tokenStack.pop();
         }
 
         if (tokenStack.peek().equals("[")) {
-          list.add(valueStack.pop());
+          list.addFirst(valueStack.pop());
           tokenStack.pop();
         }
 
