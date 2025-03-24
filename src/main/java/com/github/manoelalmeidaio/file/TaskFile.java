@@ -10,14 +10,6 @@ public class TaskFile {
   private Long currentId = 0L;
   private List<Task> tasks = new ArrayList<>();
 
-  @Override
-  public String toString() {
-    return "{" + "\n" +
-        "\t\"currentId\": " + currentId + ", " + "\n" +
-        "\t\"tasks\": " + tasks + "\n" +
-        '}';
-  }
-
   public Long getCurrentId() {
     return currentId;
   }
@@ -32,5 +24,13 @@ public class TaskFile {
 
   public void setTasks(List<Task> tasks) {
     this.tasks = tasks;
+  }
+
+  @Override
+  public String toString() {
+    return "TaskFile{" +
+        "currentId=" + currentId +
+        ", tasks=" + tasks +
+        '}';
   }
 }

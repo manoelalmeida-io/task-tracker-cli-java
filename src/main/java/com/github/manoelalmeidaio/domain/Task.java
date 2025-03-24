@@ -16,17 +16,6 @@ public class Task {
     this.description = description;
   }
 
-  @Override
-  public String toString() {
-    return "\n\t\t{" +
-        "\n\t\t\t\"id\": " + id + ", " +
-        "\n\t\t\t\"description\": " + '"' + description + '"' + ", " +
-        "\n\t\t\t\"status\": " + '"' + status + '"' + ", " +
-        "\n\t\t\t\"createdAt\": " + '"' + createdAt + '"' + ", " +
-        "\n\t\t\t\"updatedAt\": " + '"' + updatedAt + '"' +
-        "\n\t\t}";
-  }
-
   public Long getId() {
     return id;
   }
@@ -65,5 +54,16 @@ public class Task {
 
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  @Override
+  public String toString() {
+    return "Task{" +
+        "id=" + id +
+        ", description='" + description + '\'' +
+        ", status=" + status +
+        ", createdAt=" + createdAt +
+        ", updatedAt=" + updatedAt +
+        '}';
   }
 }
