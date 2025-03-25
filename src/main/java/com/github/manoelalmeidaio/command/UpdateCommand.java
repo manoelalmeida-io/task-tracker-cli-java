@@ -24,7 +24,7 @@ public class UpdateCommand implements Command {
     try {
       id = Long.parseLong(args[0]);
     } catch (Exception e) {
-      System.out.println("Invalid task id");
+      System.out.println("Error: invalid task id");
       return;
     }
 

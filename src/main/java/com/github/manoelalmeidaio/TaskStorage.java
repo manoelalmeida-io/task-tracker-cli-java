@@ -54,9 +54,14 @@ public class TaskStorage {
     return task;
   }
 
-  public void delete(Long id) {
+  public boolean delete(Long id) {
     TaskFile file = this.fileReader.read();
-    file.getTasks().removeIf(item -> item.getId().equals(id));
-    this.fileWriter.write(file);
+    boolean deleted = file.getTasks().removeIf(item -> item.getId().equals(id));
+
+    if (deleted) {
+      this.fileWriter.write(file);
+    }
+
+    return deleted;
   }
 }
