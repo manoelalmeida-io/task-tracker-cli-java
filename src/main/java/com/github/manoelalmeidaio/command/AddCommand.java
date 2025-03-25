@@ -14,7 +14,7 @@ public class AddCommand implements Command {
   @Override
   public void run(String... args) {
     if (args.length != 1) {
-      System.out.println("Usage: task-cli add [task-description]");
+      System.out.println("Usage: task-cli add [description]");
       return;
     }
 
