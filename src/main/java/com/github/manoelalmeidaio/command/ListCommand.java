@@ -39,15 +39,23 @@ public class ListCommand implements Command {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
+    String resetCode = "\033[0m";
+
     StringBuilder message = new StringBuilder();
     message.append("""
         |%3.3s| %-50.50s| %-11s | %-16s | %-16s |
         +---+---------------------------------------------------+-------------+------------------+------------------+
         """.formatted("ID", "DESCRIPTION", "STATUS", "CREATED_AT", "UPDATED_AT"));
     for (Task task : tasks) {
+      String colorCode = switch (task.getStatus()) {
+        case TODO -> "\033[48;2;196;95;12m";
+        case IN_PROGRESS -> "\033[48;2;56;61;150m";
+        case DONE -> "\033[48;2;87;108;67m";
+      };
+
       message.append("""
-        |%3d| %-50.50s| %-11s | %-16s | %-16s |
-        """.formatted(task.getId(), task.getDescription(), task.getStatus(),
+        |%3d| %-50.50s|%s %-11s %s| %-16s | %-16s |
+        """.formatted(task.getId(), task.getDescription(), colorCode, task.getStatus(), resetCode,
           formatter.format(task.getCreatedAt()), formatter.format(task.getUpdatedAt())));
     }
 
